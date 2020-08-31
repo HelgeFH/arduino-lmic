@@ -401,6 +401,8 @@ static void txDelay (ostime_t reftime, u1_t secSpan) {
 void LMICcore_setDrJoin (u1_t reason, u1_t dr) {
     LMIC_EV_PARAMETER(reason);
 
+    dr = LMICbandplan_getInitialDrJoin();
+
     EV(drChange, INFO, (e_.reason    = reason,
                         e_.deveui    = MAIN::CDEV->getEui(),
                         e_.dr        = dr|DR_PAGE,
